@@ -17,3 +17,96 @@
 @media(max-width:760px){.site-header{height:78px;padding:0 6vw}.brand{gap:17px}.brand-mark{font-size:36px}.brand-name{font-size:12px}.site-header nav{gap:23px}.exhibition-hero{display:block;padding:28px 6vw 0}.hero-designer{display:grid;grid-template-columns:1fr .68fr;align-items:center;min-height:225px;gap:10px}.hero-identity h1{font-size:64px}.hero-identity .eyebrow{font-size:13px;letter-spacing:.1em;margin-bottom:18px}.hero-english-name{font-size:21px}.hero-cutout{width:100%;max-width:180px;margin:0;justify-self:end;align-self:end}.exhibition-pieces{padding:14px 0 16px;column-gap:25px}.folio-heading{margin-bottom:30px;padding-bottom:13px}.folio-heading span:first-child{font-size:22px}.folio-heading>span:last-child{font-size:12px}.folio-rust{margin-top:48px}.folio-caption{margin-top:20px;gap:10px}.folio-caption h2{font-size:23px}.folio-caption p{font-size:12px;margin-top:5px}.folio-image{padding:6px}.folio-number{font-size:14px}.folio-arrow{font-size:19px}.exhibition-bottom{padding:18px 0 20px;margin-top:8px}.exhibition-bottom p{font-size:18px}.exhibition-bottom a{font-size:14px;gap:15px}.works{margin-top:28px}.section-kicker{padding:0 6vw}.project{padding:36px 5vw 40px}.project-heading{gap:18px;margin-bottom:22px}.project-number{font-size:55px}.project h3{font-size:40px}.project-heading .eyebrow{font-size:12px;margin-bottom:7px}.project-category{display:none}.project-intro-copy{font-size:15px;line-height:1.9}.board-toolbar{font-size:12px}.open-board-button{font-size:13px;padding:7px 12px;gap:10px}.design-board{padding:15px}.board-masthead{margin-bottom:12px;padding-bottom:12px}.board-masthead h4{font-size:20px}.board-masthead>span{font-size:12px}.board-grid{gap:10px}.board-spring .board-grid{aspect-ratio:auto;grid-template-columns:1fr 1fr;grid-template-rows:200px 190px 210px;grid-template-areas:"plan main" "plan pavilion" "concept concept"}.board-rust .board-grid{aspect-ratio:auto;grid-template-columns:1fr 1fr;grid-template-rows:210px 190px 270px;grid-template-areas:"plan plan" "left right" "main main"}.panel-caption{font-size:13px}.panel-caption .panel-index{margin-right:5px;font-size:12px}.board-colophon{font-size:12px;gap:10px;line-height:1.5}.board-colophon>span:last-child{text-align:right}.designer{grid-template-columns:.75fr 1fr;gap:25px;padding:38px 6vw}.designer-statement{font-size:26px}.designer h2{font-size:38px}.designer h2 span{font-size:22px}.site-footer{padding:25px 6vw}.site-footer>span{font-size:12px}.art-dialog{width:97vw;height:97dvh}.viewer-shell{padding:15px 12px 10px}.viewer-header{padding-bottom:12px;gap:12px}.viewer-header h2{font-size:24px}.viewer-header-actions{gap:10px}.board-return{font-size:13px;padding:7px 10px}.viewer-content{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:12px;padding-top:12px}.drawing-nav{flex-direction:row;overflow-x:auto;padding:0 0 6px;gap:8px;flex-shrink:0}.drawing-item{width:calc((100% - 24px)/4);min-width:0;flex:1;padding:6px;gap:4px;text-align:center}.drawing-item img{height:47px}.drawing-item span{font-size:12px;white-space:nowrap}.drawing-item small{display:none}.viewer-toolbar{min-height:34px;margin-bottom:8px}.viewer-drawing-title{font-size:14px}.zoom-button{font-size:13px;min-height:38px}.viewer-stage{padding:6px}.viewer-overview .design-board{padding:12px}.viewer-overview .board-masthead{margin-bottom:9px;padding-bottom:9px}.viewer-overview .board-masthead h4{font-size:18px}.viewer-overview .board-masthead>span{display:none}.viewer-overview .board-grid{gap:8px;aspect-ratio:auto}.viewer-overview .board-spring .board-grid{grid-template-rows:160px 150px 170px}.viewer-overview .board-rust .board-grid{grid-template-rows:170px 170px 220px}.viewer-overview .board-panel{padding:4px}.viewer-overview .panel-caption{font-size:12px}.viewer-caption{font-size:12px;margin-top:8px;min-height:18px}.viewer-footer{margin-top:10px;padding-top:10px}.viewer-footer p{max-width:45%;font-size:12px}.viewer-footer>div{gap:8px}.viewer-footer .icon-button{width:40px;height:40px}.viewer-counter{font-size:12px;min-width:50px}}
 @media(max-width:460px){.hero-designer{grid-template-columns:1fr .69fr;min-height:195px}.hero-identity h1{font-size:51px;letter-spacing:.04em}.hero-identity .eyebrow{font-size:12px;letter-spacing:.05em;margin-bottom:14px}.hero-english-name{font-size:19px;margin-top:12px}.hero-cutout{max-width:145px}.exhibition-pieces{column-gap:17px;padding-top:10px}.folio-heading{margin-bottom:23px}.folio-heading span:first-child{font-size:20px}.folio-rust{margin-top:42px}.folio-caption{gap:7px;margin-top:18px}.folio-caption h2{font-size:20px}.folio-number{font-size:13px}.folio-arrow{display:none}.folio-image{padding:4px}.exhibition-bottom p{font-size:16px}.exhibition-bottom a{font-size:13px;gap:10px}.project h3{font-size:35px}.project-number{font-size:48px}.board-toolbar>span{max-width:47%;font-size:12px}.design-board{padding:11px}.board-masthead h4{font-size:19px}.board-masthead>span{font-size:12px}.board-spring .board-grid{grid-template-rows:160px 150px 180px}.board-rust .board-grid{grid-template-rows:170px 170px 230px}.board-panel{padding:5px}.panel-caption{font-size:12px}.panel-plus{font-size:18px}.board-colophon>span:last-child{max-width:48%}.designer{grid-template-columns:1fr;padding:34px 6vw 45px;gap:22px}.designer-portrait{max-width:250px;width:75%;margin:auto}.designer h2{font-size:42px}.designer h2 span{display:inline-block;font-size:22px;margin:0 0 0 12px;vertical-align:middle}.designer-statement{font-size:26px;margin:24px 0 0}.site-footer>span{max-width:38%;text-align:center}.site-footer>a:last-child{font-size:13px}.viewer-header h2{font-size:20px}.viewer-header .eyebrow{font-size:12px}.viewer-close{width:40px;height:40px}.board-return{min-height:40px}.viewer-drawing-title{font-size:13px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Living color is behind the exhibition, never applied as distortion to a drawing. */
+[data-fluid]{position:relative;isolation:isolate;overflow:hidden}
+.ambient-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.site-header{height:76px;border-bottom-color:#ded6d040}
+.exhibition-hero{background:radial-gradient(ellipse at 76% 44%,#eccebb77,transparent 70%)}
+.exhibition-hero .ambient-canvas{opacity:.33;mask-image:linear-gradient(transparent,#000 18%,#000 78%,transparent)}
+.exhibition-pieces{position:relative}
+.folio-image{background:transparent;border:0;padding:0;box-shadow:none}
+.folio-image img{mix-blend-mode:multiply}
+.folio-caption{margin-top:26px}
+.folio-heading{border-bottom-color:#73556730}
+.hero-cutout{width:285px}
+.hero-cutout img{mask-image:linear-gradient(#000 89%,transparent)}
+.works{margin-top:26px}
+.project{padding:60px 5vw;background:#f2e9e1;color:#302438}
+.spring-project{background:radial-gradient(at 20% 20%,#c9dbe6,transparent 70%),linear-gradient(135deg,#d8d0ec,#dce7df,#f1d59e)}
+.rust-project{background:radial-gradient(at 80% 20%,#dbbcbd,transparent 70%),linear-gradient(135deg,#e7bca5,#e7d0b0,#aecacf)}
+.project::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#faf8f2db,#faf8f247 24%,#faf8f230 80%,#faf8f28a);pointer-events:none}
+.project-heading{margin-bottom:22px}
+.project-number{color:#416f77}
+.rust-project .project-number{color:#9b5047}
+.project-heading .eyebrow,.rust-project .eyebrow{color:#625066}
+.project-intro-copy,.rust-project .project-intro-copy{color:#524654}
+.board-toolbar,.rust-project .board-toolbar{color:#534255}
+.rust-project .open-board-button:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.open-board-button{background:#fff8;border-color:#765b6970;border-radius:30px;box-shadow:inset 0 1px #fff8}
+.design-board,.rust-project .design-board{background:#fffdf4a8;border:1px solid #ffffffe0;border-radius:13px;box-shadow:0 24px 65px -42px #4623427a;padding:24px}
+.board-masthead{border-bottom-color:#88627530}
+.board-panel{background:#fffdf755;border:1px solid #ffffff80;border-radius:5px;padding:10px}
+.board-panel:hover,.board-panel:focus-visible{background:#fffdf8b0;border-color:#fff;box-shadow:0 14px 25px -14px #45314555;transform:translateY(-3px)}
+.panel-media img{mix-blend-mode:multiply}
+.panel-caption{border-top-color:#8e6e8030;color:#514353}
+.panel-caption .panel-index{color:#755264}
+.panel-plus{color:#755264}
+.board-colophon{color:#675166;border-top-color:#8e6e8030}
+.art-dialog .design-board{background:#fffdf8;border-radius:4px}
+.art-dialog .board-panel{background:#fff;border-color:#dfd5dc}
+.art-dialog .panel-media img{mix-blend-mode:normal}
+.footer-actions{display:flex;align-items:center;gap:24px}
+.motion-toggle{border:0;border-bottom:1px solid #a695a4;background:transparent;padding:6px 0;font-size:12px;color:#6d566d;min-height:40px}
+/* Ten intact figures per board: perspectives stay separate, sections remain continuous. */
+.board-spring .board-grid{
+  aspect-ratio:auto;grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-rows:clamp(250px,24vw,325px) clamp(220px,20vw,270px) clamp(205px,19vw,250px) 230px 230px;
+  grid-template-areas:
+    "plan plan plan plan plan main main main main main main main"
+    "plan plan plan plan plan pavilion pavilion pavilion pavilion concept concept concept"
+    "plan plan plan plan plan node node node node planting planting planting"
+    "middle middle middle middle middle middle middle middle zoning zoning zoning zoning"
+    "bottom bottom bottom bottom bottom bottom bottom bottom circulation circulation circulation circulation";
+}
+.board-rust .board-grid{
+  aspect-ratio:auto;grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-rows:clamp(270px,27vw,355px) clamp(220px,23vw,290px) 205px 250px 225px;
+  grid-template-areas:
+    "plan plan plan plan plan plan plan plan plan plan plan plan"
+    "left left left left right right right right main main main main"
+    "bb bb bb bb bb bb aa aa aa aa aa aa"
+    "concept concept concept concept circulation circulation circulation circulation zoning zoning zoning zoning"
+    "concept concept concept concept nodes nodes nodes nodes nodes nodes nodes nodes";
+}
+.viewer-stage.overview-mode .viewer-overview{display:block;height:auto;align-self:flex-start}
+.viewer-overview .design-board{display:block;height:auto;max-width:none;width:100%}
+.viewer-overview .board-grid{flex:none;aspect-ratio:auto}
+.viewer-overview .board-panel{transition:none}
+.viewer-overview .board-panel:hover{transform:none}
+.viewer-overview .board-masthead{margin-bottom:15px;padding-bottom:12px}
+.folio-heading span:first-child{font-size:23px}
+@media(max-width:760px){
+  .board-spring .board-grid,.viewer-overview .board-spring .board-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:440px 260px 245px 245px 175px 165px 230px 165px;
+    grid-template-areas:"plan plan" "main main" "pavilion pavilion" "concept node" "planting planting" "middle middle" "zoning circulation" "bottom bottom";
+  }
+  .board-rust .board-grid,.viewer-overview .board-rust .board-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:210px 205px 270px 165px 165px 205px 205px 180px;
+    grid-template-areas:"plan plan" "left right" "main main" "bb bb" "aa aa" "concept circulation" "concept zoning" "nodes nodes";
+  }
+  .drawing-item{width:96px;min-width:96px;flex:0 0 96px}
+  .drawing-item span{white-space:normal;line-height:1.4}
+  .drawing-item img{height:46px}
+  .folio-heading span:first-child{font-size:21px}
+}
+@media(max-width:760px){
+  .site-header{height:68px}
+  .project{padding:38px 5vw}
+  .design-board{padding:13px}
+  .hero-cutout{width:100%}
+  .footer-actions{flex-direction:column;gap:1px;align-items:flex-end}
+  .site-footer{gap:12px}
+}
