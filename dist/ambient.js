@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  // Low-resolution color fields, never the artwork pixels. One scheduler for visible surfaces.
+  // One viewport-sized color field beneath the whole page, independent of content width.
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const toggle = document.querySelector('.motion-toggle');
   const surfaces = [];
@@ -19,25 +19,21 @@
     uniform vec3 c1,c2,c3;
     void main(){
       vec2 p = (uv-.5)*vec2(aspect*.65,1.35);
-      float t=time*.22;
+      float t=time*.48;
       // Smooth domain warping makes color ribbons bend and mingle, without moving content.
       for(int i=0;i<3;i++){
         float f=float(i)+1.;
-        p += .19*vec2(sin(p.y*2.8+f+t*.62),cos(p.x*2.45-f-t*.49))/f;
+        p += .24*vec2(sin(p.y*2.8+f+t*.62),cos(p.x*2.45-f-t*.49))/f;
       }
       float a=.5+.5*sin(p.x*3.6+p.y*2.1+sin(p.y*3.3-t)*.9+t*.7);
       float b=.5+.5*cos(p.y*3.1-p.x*1.5+sin(p.x*3.5+t)*.8-t*.6);
       vec3 col=mix(c1,c2,smoothstep(.12,.88,a));
       col=mix(col,c3,smoothstep(.28,.86,b)*.82);
       float silk=pow(.5+.5*sin((p.x+p.y)*5.4+t*.45),12.);
-      col=mix(col,vec3(1.,.98,.94),silk*.16);
+      col=mix(col,vec3(1.,.98,.94),silk*.20);
       gl_FragColor=vec4(col,1.);
     }`;
-  const palettes = {
-    spring: [[.21,.72,.75],[.70,.42,.73],[.98,.79,.39]],
-    rust: [[.85,.33,.35],[.96,.65,.27],[.39,.59,.69]],
-    gallery: [[.54,.73,.81],[.77,.57,.77],[.97,.80,.59]],
-  };
+  const palette = [[.31,.69,.78],[.78,.48,.68],[.98,.74,.35]];
 
   function compile(gl, type, source) {
     const shader=gl.createShader(type);
@@ -63,7 +59,6 @@
     gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
     const attr=gl.getAttribLocation(program,'a');
     gl.enableVertexAttribArray(attr);gl.vertexAttribPointer(attr,2,gl.FLOAT,false,0,0);
-    const palette=palettes[host.dataset.fluid]||palettes.gallery;
     palette.forEach((color,index)=>gl.uniform3fv(gl.getUniformLocation(program,'c'+(index+1)),color));
     const surface={host,canvas,gl,program,time:gl.getUniformLocation(program,'time'),aspect:gl.getUniformLocation(program,'aspect'),visible:false,lost:false};
     host.prepend(canvas);

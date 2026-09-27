@@ -18,12 +18,20 @@
 @media(max-width:460px){.hero-designer{grid-template-columns:1fr .69fr;min-height:195px}.hero-identity h1{font-size:51px;letter-spacing:.04em}.hero-identity .eyebrow{font-size:12px;letter-spacing:.05em;margin-bottom:14px}.hero-english-name{font-size:19px;margin-top:12px}.hero-cutout{max-width:145px}.exhibition-pieces{column-gap:17px;padding-top:10px}.folio-heading{margin-bottom:23px}.folio-heading span:first-child{font-size:20px}.folio-rust{margin-top:42px}.folio-caption{gap:7px;margin-top:18px}.folio-caption h2{font-size:20px}.folio-number{font-size:13px}.folio-arrow{display:none}.folio-image{padding:4px}.exhibition-bottom p{font-size:16px}.exhibition-bottom a{font-size:13px;gap:10px}.project h3{font-size:35px}.project-number{font-size:48px}.board-toolbar>span{max-width:47%;font-size:12px}.design-board{padding:11px}.board-masthead h4{font-size:19px}.board-masthead>span{font-size:12px}.board-spring .board-grid{grid-template-rows:160px 150px 180px}.board-rust .board-grid{grid-template-rows:170px 170px 230px}.board-panel{padding:5px}.panel-caption{font-size:12px}.panel-plus{font-size:18px}.board-colophon>span:last-child{max-width:48%}.designer{grid-template-columns:1fr;padding:34px 6vw 45px;gap:22px}.designer-portrait{max-width:250px;width:75%;margin:auto}.designer h2{font-size:42px}.designer h2 span{display:inline-block;font-size:22px;margin:0 0 0 12px;vertical-align:middle}.designer-statement{font-size:26px;margin:24px 0 0}.site-footer>span{max-width:38%;text-align:center}.site-footer>a:last-child{font-size:13px}.viewer-header h2{font-size:20px}.viewer-header .eyebrow{font-size:12px}.viewer-close{width:40px;height:40px}.board-return{min-height:40px}.viewer-drawing-title{font-size:13px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
-/* Living color is behind the exhibition, never applied as distortion to a drawing. */
-[data-fluid]{position:relative;isolation:isolate;overflow:hidden}
-.ambient-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+/* A single edge-to-edge surface joins header, exhibition, gaps and footer. */
+:root{--muted:#49384f}
+html{background:#d8c5c6;scrollbar-color:#9e87998a #d8c5c6}
+body{position:relative;isolation:isolate;min-height:100svh;background:transparent}
+.page-ambience{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:linear-gradient(125deg,#aad4d5,#d8b0cd 45%,#ebc68d)}
+.ambient-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.page-ambience::after{content:"";position:absolute;inset:0;background:#fffaf14d;pointer-events:none}
 .site-header{height:76px;border-bottom-color:#ded6d040}
-.exhibition-hero{background:radial-gradient(ellipse at 76% 44%,#eccebb77,transparent 70%)}
-.exhibition-hero .ambient-canvas{opacity:.33;mask-image:linear-gradient(transparent,#000 18%,#000 78%,transparent)}
+.site-header,.exhibition-hero,.works,.section-kicker,.site-footer{background:transparent}
+.site-header,.exhibition-hero,.section-kicker,.site-footer{
+  padding-left:max(var(--edge-space,5vw),env(safe-area-inset-left));
+  padding-right:max(var(--edge-space,5vw),env(safe-area-inset-right));
+}
+.exhibition-hero{position:relative}
 .exhibition-pieces{position:relative}
 .folio-image{background:transparent;border:0;padding:0;box-shadow:none}
 .folio-image img{mix-blend-mode:multiply}
@@ -32,16 +40,18 @@
 .hero-cutout{width:285px}
 .hero-cutout img{mask-image:linear-gradient(#000 89%,transparent)}
 .works{margin-top:26px}
-.project{padding:60px 5vw;background:#f2e9e1;color:#302438}
-.spring-project{background:radial-gradient(at 20% 20%,#c9dbe6,transparent 70%),linear-gradient(135deg,#d8d0ec,#dce7df,#f1d59e)}
-.rust-project{background:radial-gradient(at 80% 20%,#dbbcbd,transparent 70%),linear-gradient(135deg,#e7bca5,#e7d0b0,#aecacf)}
-.project::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#faf8f2db,#faf8f247 24%,#faf8f230 80%,#faf8f28a);pointer-events:none}
+.project{position:relative;padding:60px 5vw;color:#302438}
+.project,.spring-project,.rust-project{background:transparent}
+.project{padding-left:max(5vw,env(safe-area-inset-left));padding-right:max(5vw,env(safe-area-inset-right))}
 .project-heading{margin-bottom:22px}
 .project-number{color:#416f77}
 .rust-project .project-number{color:#9b5047}
-.project-heading .eyebrow,.rust-project .eyebrow{color:#625066}
-.project-intro-copy,.rust-project .project-intro-copy{color:#524654}
-.board-toolbar,.rust-project .board-toolbar{color:#534255}
+.project-heading .eyebrow,.rust-project .eyebrow{color:#49384f}
+.project-intro-copy,.rust-project .project-intro-copy{color:#49384f}
+.eyebrow,.folio-caption p{color:#49384f}
+.folio-number{color:#713844}
+.exhibition-bottom p span{color:#554052}
+.board-toolbar,.rust-project .board-toolbar{color:#49384f}
 .rust-project .open-board-button:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .open-board-button{background:#fff8;border-color:#765b6970;border-radius:30px;box-shadow:inset 0 1px #fff8}
 .design-board,.rust-project .design-board{background:#fffdf4a8;border:1px solid #ffffffe0;border-radius:13px;box-shadow:0 24px 65px -42px #4623427a;padding:24px}
@@ -57,7 +67,7 @@
 .art-dialog .board-panel{background:#fff;border-color:#dfd5dc}
 .art-dialog .panel-media img{mix-blend-mode:normal}
 .footer-actions{display:flex;align-items:center;gap:24px}
-.motion-toggle{border:0;border-bottom:1px solid #a695a4;background:transparent;padding:6px 0;font-size:12px;color:#6d566d;min-height:40px}
+.motion-toggle{border:0;border-bottom:1px solid #a695a4;background:transparent;padding:6px 0;font-size:12px;color:#49384f;min-height:40px}
 /* Ten intact figures per board: perspectives stay separate, sections remain continuous. */
 .board-spring .board-grid{
   aspect-ratio:auto;grid-template-columns:repeat(12,minmax(0,1fr));
@@ -104,7 +114,8 @@
 }
 @media(max-width:760px){
   .site-header{height:68px}
-  .project{padding:38px 5vw}
+  .site-header,.exhibition-hero,.section-kicker,.site-footer{--edge-space:6vw}
+  .project{padding:38px max(5vw,env(safe-area-inset-right)) 38px max(5vw,env(safe-area-inset-left))}
   .design-board{padding:13px}
   .hero-cutout{width:100%}
   .footer-actions{flex-direction:column;gap:1px;align-items:flex-end}
