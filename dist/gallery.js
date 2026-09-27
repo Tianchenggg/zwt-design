@@ -1,67 +1,156 @@
 (() => {
   'use strict';
 
-  const artworks = [
-    ['spring-redrawn', '瑶池春晓', '水岸亭廊', '蓝绿色亭顶、临水平台与花木环绕的水岸景观'],
-    ['spring-canopy-detail', '瑶池春晓', '一叶成亭', '青绿色亭顶与纤细立柱'],
-    ['spring-water-detail', '瑶池春晓', '与水相望', '荷叶、水面倒影与临水平台'],
-    ['spring-planting-detail', '瑶池春晓', '春色有层次', '粉紫、金黄与青绿植物的层次'],
-    ['rust-redrawn', '锈色记忆·活力新生', '流动的轮廓', '红色曲线亭廊环抱中心花池的空间透视图'],
-    ['rust-frame-detail', '锈色记忆·活力新生', '流动的轮廓 · 构筑', '曲线结构与中央圆形花池'],
-    ['rust-water-detail', '锈色记忆·活力新生', '水边的日常', '沿曲线延伸的水面与步道'],
-    ['rust-planting-detail', '锈色记忆·活力新生', '给生活一点暖色', '粉色与金黄色的树冠交织'],
-  ];
   const dialog = document.querySelector('.art-dialog');
+  if (!dialog || typeof dialog.showModal !== 'function') {
+    document.querySelectorAll('[data-board]').forEach(button => { button.hidden = true; });
+    return;
+  }
+
+  // Each entry comes from a genuinely independent drawing on its project board.
+  const projects = Object.fromEntries(
+    [...document.querySelectorAll('[data-project-board]')].map(board => [
+      board.dataset.projectBoard,
+      {
+        board,
+        title: board.querySelector('h4').textContent,
+        drawings: [...board.querySelectorAll('[data-viewer]')].map(link => ({
+          key: link.dataset.viewer,
+          src: link.getAttribute('href'),
+          title: link.querySelector('.panel-caption > span').childNodes[1].textContent.trim(),
+          alt: link.querySelector('img').alt,
+        })),
+      },
+    ])
+  );
+
   const stage = dialog.querySelector('.viewer-stage');
   const image = dialog.querySelector('.viewer-image');
+  const overview = dialog.querySelector('.viewer-overview');
   const error = dialog.querySelector('.image-error');
   const zoomButton = dialog.querySelector('.zoom-button');
-  let current = 0;
+  const boardButton = dialog.querySelector('.board-return');
+  const nav = dialog.querySelector('.drawing-nav');
+  const drawingTitle = dialog.querySelector('.viewer-drawing-title');
+  const caption = dialog.querySelector('.viewer-caption');
+  const counter = dialog.querySelector('.viewer-counter');
+  let project = null;
+  let current = null;
   let opener = null;
 
   function setZoom(zoomed) {
     stage.classList.toggle('is-zoomed', zoomed);
     zoomButton.setAttribute('aria-pressed', String(zoomed));
     zoomButton.textContent = zoomed ? '适合屏幕 −' : '放大细看 ＋';
-    stage.scrollTo(0, 0);
+    stage.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
 
-  function renderImage() {
-    const [key, series, title, alt] = artworks[current];
-    dialog.querySelector('#viewer-series').textContent = series;
-    dialog.querySelector('#viewer-title').textContent = title;
-    dialog.querySelector('.viewer-counter').textContent = `${String(current + 1).padStart(2, '0')} / ${artworks.length}`;
-    error.hidden = true;
-    image.hidden = false;
-    image.alt = alt;
-    image.src = `assets/${key}.webp`;
+  function render() {
+    const isOverview = current === null;
     setZoom(false);
+    stage.classList.toggle('overview-mode', isOverview);
+    error.hidden = true;
+    image.hidden = isOverview;
+    overview.hidden = !isOverview;
+    zoomButton.hidden = isOverview;
+    boardButton.setAttribute('aria-pressed', String(isOverview));
+    nav.querySelectorAll('button').forEach((button, index) => {
+      button.setAttribute('aria-current', String(index === current));
+    });
+    if (isOverview) {
+      drawingTitle.textContent = '完整展板';
+      caption.textContent = '选择画中的一张图纸，展开欣赏。';
+      counter.textContent = '总览';
+    } else {
+      const drawing = project.drawings[current];
+      image.alt = drawing.alt;
+      image.src = drawing.src;
+      drawingTitle.textContent = drawing.title;
+      caption.textContent = drawing.alt;
+      counter.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(project.drawings.length).padStart(2, '0');
+    }
   }
+
+  function select(index) {
+    const focusWasInOverview = overview.contains(document.activeElement);
+    current = index;
+    render();
+    if (focusWasInOverview) stage.focus({ preventScroll: true });
+  }
+
+  function openProject(key, index, source) {
+    project = projects[key];
+    if (!project) return;
+    opener = source;
+    current = index;
+    dialog.querySelector('#viewer-title').textContent = project.title;
+    const clone = project.board.cloneNode(true);
+    clone.removeAttribute('data-project-board');
+    clone.querySelectorAll('img').forEach(img => { img.loading = 'eager'; });
+    overview.replaceChildren(clone);
+    nav.replaceChildren(...project.drawings.map((drawing, i) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'drawing-item';
+      button.setAttribute('aria-label', '查看' + drawing.title);
+      const thumb = document.createElement('img');
+      thumb.src = drawing.src;
+      thumb.alt = '';
+      thumb.width = 66;
+      thumb.height = 49;
+      const label = document.createElement('span');
+      const number = document.createElement('small');
+      number.textContent = String(i + 1).padStart(2, '0');
+      label.append(number, document.createTextNode(drawing.title));
+      button.append(thumb, label);
+      button.addEventListener('click', () => select(i));
+      return button;
+    }));
+    render();
+    document.documentElement.classList.add('gallery-open');
+    dialog.showModal();
+    dialog.querySelector('.viewer-close').focus({ preventScroll: true });
+  }
+
+  document.addEventListener('click', event => {
+    const target = event.target.closest('[data-viewer], [data-board]');
+    if (!target || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (target.hasAttribute('data-board')) {
+      event.preventDefault();
+      openProject(target.dataset.board, null, target);
+      return;
+    }
+    const key = Object.keys(projects).find(name =>
+      projects[name].drawings.some(drawing => drawing.key === target.dataset.viewer)
+    );
+    if (!key) return;
+    event.preventDefault();
+    const index = projects[key].drawings.findIndex(drawing => drawing.key === target.dataset.viewer);
+    if (dialog.open) select(index);
+    else openProject(key, index, target);
+  });
 
   function changeImage(step) {
-    current = (current + step + artworks.length) % artworks.length;
-    renderImage();
+    if (current === null) select(step > 0 ? 0 : project.drawings.length - 1);
+    else select((current + step + project.drawings.length) % project.drawings.length);
   }
 
-  document.querySelectorAll('[data-viewer]').forEach(link => {
-    link.addEventListener('click', event => {
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || typeof dialog.showModal !== 'function') return;
-      event.preventDefault();
-      current = artworks.findIndex(item => item[0] === link.dataset.viewer);
-      if (current < 0) return;
-      opener = link;
-      renderImage();
-      dialog.showModal();
-      document.documentElement.classList.add('gallery-open');
-      dialog.querySelector('.viewer-close').focus({ preventScroll: true });
-    });
+  boardButton.addEventListener('click', () => select(null));
+  zoomButton.addEventListener('click', () => {
+    const zoomed = !stage.classList.contains('is-zoomed');
+    setZoom(zoomed);
+    if (zoomed) stage.focus({ preventScroll: true });
   });
   dialog.querySelector('.viewer-close').addEventListener('click', () => dialog.close());
   dialog.querySelector('.previous-image').addEventListener('click', () => changeImage(-1));
   dialog.querySelector('.next-image').addEventListener('click', () => changeImage(1));
-  zoomButton.addEventListener('click', () => setZoom(!stage.classList.contains('is-zoomed')));
-  image.addEventListener('error', () => { error.hidden = false; image.hidden = true; });
+  image.addEventListener('error', () => {
+    if (current === null) return;
+    image.hidden = true;
+    error.hidden = false;
+  });
   dialog.addEventListener('keydown', event => {
+    // Arrow keys pan the enlarged image when its scroll region is focused.
     if (stage.classList.contains('is-zoomed') && event.target === stage) return;
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
       event.preventDefault();
@@ -76,29 +165,5 @@
     opener?.focus({ preventScroll: true });
   });
 
-  // Native document scrolling: never replace wheel/touch events or animate scroll position.
-  // Entrance effects run once; reading backwards does not hide already viewed work.
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  if ('IntersectionObserver' in window && !reducedMotion.matches) {
-    const revealObserver = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add('is-seen');
-        revealObserver.unobserve(entry.target);
-      }
-    }, { threshold: 0.06 });
-    document.querySelectorAll('[data-reveal]').forEach(element => {
-      // Only opt in below the first viewport so direct anchor visits remain visible.
-      if (element.getBoundingClientRect().top > innerHeight) {
-        element.classList.add('will-reveal');
-        revealObserver.observe(element);
-      }
-    });
-    reducedMotion.addEventListener('change', event => {
-      if (event.matches) {
-        revealObserver.disconnect();
-        document.querySelectorAll('.will-reveal').forEach(element => element.classList.add('is-seen'));
-      }
-    });
-  }
+  // Scroll remains browser-native: no wheel interception, fade-out or scroll locking outside the dialog.
 })();
