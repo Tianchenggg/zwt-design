@@ -10,29 +10,29 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23302138'/%3E%3Cpath d='M17 19h30L17 45h30' fill='none' stroke='%23e9cfb0' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script src="gallery.js" defer></script>
+  <script src="ambient.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#works">跳至作品</a>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="ZWT 设计作品展首页"><span class="brand-mark">zwt.</span><span class="brand-name">设计作品展</span></a>
-    <nav aria-label="主导航"><a href="#works" data-nav="works">作品 <span>02</span></a><a href="#designer" data-nav="designer">设计师</a></nav>
   </header>
   <main>
-    <section class="exhibition-hero" id="home" aria-labelledby="hero-title">
+    <section class="exhibition-hero" data-fluid="gallery" id="home" aria-labelledby="hero-title">
       <div class="hero-designer">
         <div class="hero-identity"><p class="eyebrow">景观设计 · 手绘表达</p><h1 id="hero-title">张雯婷</h1><p class="hero-english-name">Terra Zhang</p></div>
-        <a class="hero-cutout" href="#designer" aria-label="认识设计师张雯婷"><img src="assets/terra-cutout.webp" width="900" height="1125" alt="设计师张雯婷" fetchpriority="high"></a>
+        <div class="hero-cutout"><img src="assets/terra-beauty.webp" width="900" height="1125" alt="设计师张雯婷" fetchpriority="high"></div>
       </div>
       <div class="exhibition-pieces">
-        <div class="folio-heading"><span>纸上风景</span><span>作品 01 — 02</span></div>
+        <div class="folio-heading"><span>纸上风景</span></div>
         <a class="folio-piece folio-spring" href="#spring" aria-label="欣赏作品一：瑶池春晓"><div class="folio-image"><img src="assets/spring-redrawn.webp" width="1536" height="1024" alt="青绿水岸、亭廊与春日花木" fetchpriority="high"></div><div class="folio-caption"><span class="folio-number">01</span><div><h2>瑶池春晓</h2><p>水岸 · 花木 · 亭廊</p></div><span class="folio-arrow" aria-hidden="true">↗</span></div></a>
         <a class="folio-piece folio-rust" href="#rust" aria-label="欣赏作品二：锈色记忆·活力新生"><div class="folio-image"><img src="assets/rust-redrawn.webp" width="1448" height="1086" alt="锈红色曲线亭廊与金色树冠" decoding="async"></div><div class="folio-caption"><span class="folio-number">02</span><div><h2>锈色记忆<span>活力新生</span></h2><p>居住区景观设计</p></div><span class="folio-arrow" aria-hidden="true">↗</span></div></a>
       </div>
       <div class="exhibition-bottom"><p>一笔一画，<span>皆是风景。</span></p><a href="#works">展开作品 <span aria-hidden="true">↓</span></a></div>
     </section>
     <section class="works" id="works" aria-labelledby="works-title">
-      <div class="section-kicker"><h2 id="works-title">作品选集</h2><span>01 — 02</span></div>
-      <article class="project spring-project" id="spring" aria-labelledby="spring-title">
+      <div class="section-kicker"><h2 id="works-title">作品选集</h2></div>
+      <article class="project spring-project" data-fluid="spring" id="spring" aria-labelledby="spring-title">
         <div class="project-heading"><span class="project-number">01</span><div><p class="eyebrow">水岸 · 花木 · 亭廊</p><h3 id="spring-title">瑶池春晓</h3></div><span class="project-category">景观设计</span></div>
         <p class="project-intro-copy">临水而坐，向春而生。将莲叶的姿态化为亭廊，让花木、步道与水岸，共同织就春日的风景。</p>
         <div class="board-toolbar"><span>轻触图纸，走进画中</span><button class="open-board-button" type="button" data-board="spring">全屏看展板 <span aria-hidden="true">↗</span></button></div>
@@ -43,11 +43,17 @@
             <a class="board-panel" style="grid-area:main" href="assets/spring-redrawn.webp" data-viewer="spring-redrawn" aria-label="查看水岸亭廊"><div class="panel-media"><img src="assets/spring-redrawn.webp" width="1536" height="1024" alt="青绿色亭顶、临水平台与彩色花木" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">02</span>水岸亭廊</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
             <a class="board-panel" style="grid-area:pavilion" href="assets/spring-pavilion-hd.webp" data-viewer="spring-pavilion-hd" aria-label="查看花间庭院"><div class="panel-media"><img src="assets/spring-pavilion-hd.webp" width="1536" height="1024" alt="粉紫花木掩映下的庭院与矩形亭廊" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">03</span>花间庭院</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
             <a class="board-panel" style="grid-area:concept" href="assets/spring-concept-hd.webp" data-viewer="spring-concept-hd" aria-label="查看形态构思"><div class="panel-media"><img src="assets/spring-concept-hd.webp" width="1346" height="1168" alt="由莲叶、叶脉到屋面与结构的四幅构思草图" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">04</span>形态构思</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:node" href="assets/spring-node-hd.webp" data-viewer="spring-node-hd" aria-label="查看节点平面"><div class="panel-media"><img src="assets/spring-node-hd.webp" width="1496" height="1051" alt="荷花池、步道与种植围合构成的节点平面" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">05</span>节点平面</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:planting" href="assets/spring-planting-hd.webp" data-viewer="spring-planting-hd" aria-label="查看植物配置"><div class="panel-media"><img src="assets/spring-planting-hd.webp" width="1770" height="889" alt="两行六种植物符号与手绘色彩配置" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">06</span>植物配置</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:middle" href="assets/spring-section-mid-hd.webp" data-viewer="spring-section-mid-hd" aria-label="查看水岸剖面"><div class="panel-media"><img src="assets/spring-section-mid-hd.webp" width="2172" height="724" alt="亭廊、水岸与树冠连续展开的景观剖面" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">07</span>水岸剖面</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:bottom" href="assets/spring-section-bottom-hd.webp" data-viewer="spring-section-bottom-hd" aria-label="查看花木立面"><div class="panel-media"><img src="assets/spring-section-bottom-hd.webp" width="2170" height="725" alt="台阶、花木与亭架组成的完整景观立面" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">08</span>花木立面</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:zoning" href="assets/spring-zoning-hd.webp" data-viewer="spring-zoning-hd" aria-label="查看功能分区"><div class="panel-media"><img src="assets/spring-zoning-hd.webp" width="1345" height="1169" alt="三个空间色块与步道带构成的功能分析" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">09</span>功能分区</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:circulation" href="assets/spring-circulation-hd.webp" data-viewer="spring-circulation-hd" aria-label="查看游线分析"><div class="panel-media"><img src="assets/spring-circulation-hd.webp" width="1285" height="1224" alt="主要动线与次要动线构成的游览路径" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">10</span>游线分析</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
           </div>
           <div class="board-colophon"><span>张雯婷 · 景观设计</span><span>从一叶的形态，到一处可停留的风景</span></div>
         </div>
       </article>
-      <article class="project rust-project" id="rust" aria-labelledby="rust-title">
+      <article class="project rust-project" data-fluid="rust" id="rust" aria-labelledby="rust-title">
         <div class="project-heading"><span class="project-number">02</span><div><p class="eyebrow">记忆 · 秩序 · 日常</p><h3 id="rust-title">锈色记忆<span>活力新生</span></h3></div><span class="project-category">居住区景观设计</span></div>
         <p class="project-intro-copy">让记忆成为新的日常。锈红的曲线、舒展的水庭与暖色花木，在居住空间之间，勾勒可行走、可停留的生活。</p>
         <div class="board-toolbar"><span>轻触图纸，走进画中</span><button class="open-board-button" type="button" data-board="rust">全屏看展板 <span aria-hidden="true">↗</span></button></div>
@@ -58,14 +64,19 @@
             <a class="board-panel" style="grid-area:left" href="assets/rust-water-left-hd.webp" data-viewer="rust-water-left-hd" aria-label="查看曲亭水庭"><div class="panel-media"><img src="assets/rust-water-left-hd.webp" width="1676" height="939" alt="曲面亭架与水面、石桥组成的独立空间透视" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">02</span>曲亭水庭</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
             <a class="board-panel" style="grid-area:right" href="assets/rust-water-right-hd.webp" data-viewer="rust-water-right-hd" aria-label="查看轴线花园"><div class="panel-media"><img src="assets/rust-water-right-hd.webp" width="1768" height="889" alt="沿线性水景与花池望向远处入口的独立空间透视" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">03</span>轴线花园</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
             <a class="board-panel" style="grid-area:main" href="assets/rust-redrawn.webp" data-viewer="rust-redrawn" aria-label="查看锈红亭廊"><div class="panel-media"><img src="assets/rust-redrawn.webp" width="1448" height="1086" alt="锈红色曲线亭廊环抱花池，四周是暖色植物" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">04</span>锈红亭廊</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:bb" href="assets/rust-section-bb-hd.webp" data-viewer="rust-section-bb-hd" aria-label="查看B—B 景观剖面"><div class="panel-media"><img src="assets/rust-section-bb-hd.webp" width="2170" height="725" alt="建筑、花木与亭架在同一条剖面上的空间关系" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">05</span>B—B 景观剖面</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:aa" href="assets/rust-section-aa-hd.webp" data-viewer="rust-section-aa-hd" aria-label="查看A—A 景观剖面"><div class="panel-media"><img src="assets/rust-section-aa-hd.webp" width="2172" height="724" alt="两栋建筑之间连续的植物与开放空间剖面" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">06</span>A—A 景观剖面</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:concept" href="assets/rust-concept-group-hd.webp" data-viewer="rust-concept-group-hd" aria-label="查看形态演绎"><div class="panel-media"><img src="assets/rust-concept-group-hd.webp" width="879" height="1790" alt="两组由几何轮廓到亭架形态的完整推演" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">07</span>形态演绎</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:circulation" href="assets/rust-circulation-analysis-hd.webp" data-viewer="rust-circulation-analysis-hd" aria-label="查看交通分析"><div class="panel-media"><img src="assets/rust-circulation-analysis-hd.webp" width="1779" height="884" alt="居住区主要路径、次要路径与节点连接" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">08</span>交通分析</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:zoning" href="assets/rust-function-analysis-hd.webp" data-viewer="rust-function-analysis-hd" aria-label="查看功能分区"><div class="panel-media"><img src="assets/rust-function-analysis-hd.webp" width="1902" height="827" alt="居住建筑间的公共空间与功能色块" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">09</span>功能分区</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
+            <a class="board-panel" style="grid-area:nodes" href="assets/rust-node-analysis-hd.webp" data-viewer="rust-node-analysis-hd" aria-label="查看节点关系"><div class="panel-media"><img src="assets/rust-node-analysis-hd.webp" width="1926" height="817" alt="线性轴线与圆形、椭圆形节点之间的连接" loading="lazy" decoding="async"></div><div class="panel-caption"><span><span class="panel-index">10</span>节点关系</span><span class="panel-plus" aria-hidden="true">＋</span></div></a>
           </div>
           <div class="board-colophon"><span>张雯婷 · 景观设计</span><span>以流动的线条，回应生活的温度</span></div>
         </div>
       </article>
     </section>
-    <section id="designer" class="designer has-portrait" aria-labelledby="designer-title"><figure class="designer-portrait"><img src="assets/terra-cutout.webp" width="900" height="1125" alt="设计师张雯婷" loading="lazy" decoding="async"></figure><div class="designer-copy"><p class="eyebrow">画作背后</p><h2 id="designer-title">张雯婷 <span>Terra Zhang</span></h2><p class="designer-role">景观设计 · 手绘表达</p><p class="designer-statement">把空间的秩序、植物的色彩与日常的温度，落在一笔一画之间。</p></div></section>
   </main>
-  <footer class="site-footer"><a class="footer-brand" href="#home">zwt.</a><span>张雯婷 · 设计作品展</span><a href="#home">回到顶部 ↑</a></footer>
+  <footer class="site-footer"><a class="footer-brand" href="#home">zwt.</a><span>张雯婷 · 设计作品展</span><div class="footer-actions"><button class="motion-toggle" type="button">暂停流动</button><a href="#home">回到顶部 ↑</a></div></footer>
   <dialog class="art-dialog" aria-labelledby="viewer-title" aria-describedby="viewer-help">
     <div class="viewer-shell">
       <header class="viewer-header"><div><p class="eyebrow">张雯婷 · 设计作品展</p><h2 id="viewer-title"></h2></div><div class="viewer-header-actions"><button class="board-return" type="button" aria-pressed="true">展板总览</button><button class="viewer-close icon-button" type="button" aria-label="关闭展板">×</button></div></header>

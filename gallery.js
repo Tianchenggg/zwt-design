@@ -57,6 +57,9 @@
     nav.querySelectorAll('button').forEach((button, index) => {
       button.setAttribute('aria-current', String(index === current));
     });
+    if (dialog.open && current !== null) {
+      nav.children[current]?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+    }
     if (isOverview) {
       drawingTitle.textContent = '完整展板';
       caption.textContent = '选择画中的一张图纸，展开欣赏。';
@@ -110,6 +113,7 @@
     document.documentElement.classList.add('gallery-open');
     dialog.showModal();
     dialog.querySelector('.viewer-close').focus({ preventScroll: true });
+    if (current !== null) nav.children[current]?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
   }
 
   document.addEventListener('click', event => {
